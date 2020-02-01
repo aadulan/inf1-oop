@@ -1,0 +1,118 @@
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.lang.System;
+
+public class Rabbit {
+	private ArrayList<ArrayList<Integer>> r;
+	private int n;
+
+	public Rabbit(int n) {
+		this.n = n;
+		r = new ArrayList<ArrayList<Integer>>(n);
+
+	}
+
+	public void init() {
+		if (n >= 2) {
+			// r.addAll(new ArrayList<Integer>().add(1));
+			// r.addAll(new ArrayList<Integer>().add(1));
+
+			ArrayList<Integer> a = new ArrayList<>();
+			ArrayList<Integer> b = new ArrayList<>();
+			a.add(1);
+			b.add(1);
+			b.add(0);
+			r.add(a);
+			r.add(b);
+
+			for (int i = 2; i < n; i++) {
+				ArrayList<Integer> y = new ArrayList<>(r.get(i - 2).size() + r.get(i - 1).size());
+
+				for (int j = 0; j < r.get(i - 1).size(); j++) {
+					y.add(r.get(i - 1).get(j));
+
+				}
+				for (int j = 0; j < r.get(i - 2).size(); j++) {
+					y.add(r.get(i - 2).get(j));
+
+				}
+				r.add(y);
+			}
+		}
+
+	}
+
+	public String toString() {
+		String s = "";
+		for (ArrayList<Integer> a : r) {
+
+			s += a + "\n";
+
+		}
+		return s;
+	}
+
+	public int subsequenceIndex(Integer[] target) {
+
+		// if(r.get(n-1).containsAll(target)){
+		////
+		// return r.get(n-1).indexOf(target);
+		// }else {
+		// return -1;}
+
+		boolean match = true;
+		for (int i = 0; i < r.get(n - 1).size(); i++) 
+		{
+
+			for (int j = 0; j < target.length; j++) 
+			{
+				if (i + j < r.get(n - 1).size()) 
+				{
+					if (r.get(n - 1).get(i + j) == target[j]) 
+					{
+						match = true;
+
+					} 
+					else 
+					{
+						match = false;
+						break;
+					}
+				}
+				else 
+				{
+					match =false;
+					break;
+				}
+				
+			}
+			if (match == true)
+			{
+				return i;
+			} 
+
+		}
+		return -1;
+
+	}
+
+	public static void main(String[] args) {
+		int n = Integer.parseInt(args[0]);
+		Rabbit bugs = new Rabbit(n);
+		bugs.init();
+		Integer[] g = new Integer[] {1,1,0};
+		
+		
+		Integer[] a= new Integer[]{1,1,1};
+		
+		
+		
+		int f = bugs.subsequenceIndex(g);
+		int h = bugs.subsequenceIndex(a);
+		System.out.print(bugs);
+		System.out.println(f);
+		System.out.println(h);
+	}
+
+}

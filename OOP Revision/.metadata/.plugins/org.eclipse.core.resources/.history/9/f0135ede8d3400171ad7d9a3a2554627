@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+import java.util.Set;
+
+public class Beads {
+	
+	public static Set<Integer> sums(ArrayList<Integer> nums, int n){
+		
+		
+	}
+	public static Set<Integer> allSums(ArrayList<Integer> nums)
+	{
+		
+	}
+	public static int findMax(Set<Integer> s){
+		
+	}
+	public static void main(String [] args )
+	{
+		
+	}
+
+}

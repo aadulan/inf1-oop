@@ -1,0 +1,11 @@
+
+public class UG1Student extends Student {
+	
+	private char mainSchedule;
+	
+	public UG1Student(String name, String uun, char schedule){
+		super(name,uun);
+		
+	}
+
+}

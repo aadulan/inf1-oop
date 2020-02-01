@@ -1,0 +1,191 @@
+
+public class ArrayOps 
+{
+	public static double findMax(double[] data) {
+        double max = data[0];
+        
+        for(int i = 1; i<data.length ; i++)
+        {
+        	if(data[i]> max)
+        	{
+        		max = data[i];
+        	}
+        }
+        return max;
+    }
+
+    public static double[] normalise(double data[]) {
+        
+    	double sum = 0.0;
+    	int n = data.length;
+    			
+    	for(int i =0; i< data.length ; i++)
+    	{
+    		sum+= data[i];
+    	}
+    	double average = sum/n;
+    	
+    	for(int i= 0; i< data.length; i++)
+    	{
+    		data[i] = (data[i]/average);
+    	}
+    	
+    	return data;
+    }
+
+    public static void normaliseInPlace(double data[]) {
+         
+    	double sum = 0.0;
+    	int n = data.length;
+    	
+    	for(int i =0; i< data.length; i++)
+    	{
+    		sum +=data[i];
+    	}
+    	
+    	double average= sum/n;
+    	
+    	double[] newa= new double [n];
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		newa[i]= data[i];
+    	}
+    	
+    	for( int i = 0; i<n; i++)
+    	{
+    		newa[i]=newa[i]/average;
+    	}
+    	
+    	System.out.println("The orginal array is");
+    	System.out.println("");
+    	
+    	for(int i =0 ;i<n; i++)
+    	{
+    	 System.out.print(data[i] + " ");	
+    	}
+    	
+    	System.out.println("The normalised array is");
+    	System.out.println("");
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(newa[i] + " ");
+    	}		
+    	
+    }
+
+    public static double[] reverse(double[] data) {
+    	
+        for(int i =0; i<(data.length/2); i++)
+        {
+        	int n =(data.length/2);
+        	double temp = data[i];
+        	data[i]= data[n-1-i];
+        	data[n-1-i]= temp;
+        }
+        
+        return data;
+    }
+
+    public static void reverseInPlace(double[] data) {
+        
+    	int n = data.length;
+    	double[] newa = new double [data.length];
+    	
+    	for(int i = 0; i<n ; i++)
+    	{
+    		newa[i]= data[i];
+    	}
+    	
+    	for( int i =0; i<n/2 ;i++)
+    	{
+    		double temp = newa[i];
+        	newa[i]= newa[n-1-i];
+        	newa[n-1-i]= temp;
+    	}
+    	System.out.println("The orginal array is");
+    	System.out.println("");
+    	
+    	for(int i =0 ;i<n; i++)
+    	{
+    	 System.out.print(data[i] + " ");	
+    	}
+    	
+    	System.out.println("The normalised array is");
+    	System.out.println("");
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(newa[i] + " ");
+    	}		
+    	
+    	
+    }
+
+    public static void swap(double[] data1, double[] data2) {
+       
+    	int n = data1.length;
+    	double[] new1 = new double[n];
+    	double[] new2 = new double[n];
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		new1[i]= data1[i];
+    	}
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		new2[i]= data2[i];
+    	}
+    	for(int i=0; i<n;i++)
+    	{
+    		data1[i] = new2[i];
+    	}
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		data2[i]= new1[i];
+    	}
+    	
+    	System.out.println("The orginal arrays are");
+    	System.out.println(" ");
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(new1[i]+ " ");
+       	}
+    	System.out.println(" ");
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(new2[i]+ " ");
+       	}
+    	
+    	System.out.println("The new arrays are");
+    	System.out.println(" ");
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(data1[i]+ " ");
+       	}
+    	System.out.println(" ");
+    	
+    	for(int i=0; i<n; i++)
+    	{
+    		System.out.print(data2[i]+ " ");
+       	}
+    	
+    	
+    }
+    
+    public static void main(String[] args)
+    {
+    	int N = args.length;
+    	double[] data = new double[N];
+    
+    			for (int i=0; i<N; i++)
+    			{
+    				data[i]=Integer.parseInt(args[i]);
+    			}
+    }
+}

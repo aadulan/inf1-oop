@@ -1,0 +1,34 @@
+
+public class MeanVariance {
+	
+    public static void main(String[] args){
+	  
+    	int N = args.length;
+    	int[] nums = new int [N];
+    	
+    	for (int i=0; i<N; i++){
+    		
+    		nums[i]=Integer.parseInt(args[i]);
+    	}
+    	
+    	double sum = 0.0;
+    	
+    	for (int i =0; i<N ; i++)
+    	{
+    		sum += nums[i];
+    	}
+    	
+    	double mean = sum /(nums.length);
+      	double zero = 0.0;
+    	
+    	for (int i = 0; i<N ; i++) {
+    		
+    		zero += (nums[i]-mean) *(nums[i]- mean);
+    	}
+    	
+    	double variance = zero/(nums.length);
+    	
+    	System.out.println(mean);
+    	System.out.println(variance);
+ }
+}

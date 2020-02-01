@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+
+public class Student extends Person {
+
+	private ArrayList<Course> activeCourses;
+	private ArrayList<Course> completedCourses;
+	private int maxCourses;
+
+	public Student(String firstName, String lastName, ArrayList<Course> activeCourses,
+			ArrayList<Course> completedCourses, int n) {
+		super(firstName, lastName);
+		this.activeCourses = activeCourses;
+		this.completedCourses = completedCourses;
+		this.maxCourses = n;
+
+	}
+
+	public void setMaxCourse(int n) {
+		this.maxCourses = n;
+	}
+
+	public int getMaxCourse() {
+		return maxCourses;
+
+	}
+	public boolean canEnroll(Course c)
+	{
+		if (activeCourses.contains(c) && completedCourses.contains(c)&& activeCourses.size()>=maxCourses && completedCourses.containsAll(c.getPrerequisiteCourses()))
+		{
+			return true;
+		}
+		else return false;
+	}
+
+}

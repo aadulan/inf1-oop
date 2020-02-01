@@ -1,0 +1,79 @@
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.lang.System;
+
+public class Rabbit {
+	private ArrayList<ArrayList<Integer>> r;
+	private int n;
+
+	public Rabbit(int n) {
+		this.n = n;
+		r = new ArrayList<ArrayList<Integer>>(n);
+
+	}
+
+	public void init() {
+		if (n >= 2) {
+//			r.addAll(new ArrayList<Integer>().add(1));
+//			r.addAll(new ArrayList<Integer>().add(1));
+			
+			ArrayList<Integer> a = new ArrayList<>();
+			ArrayList<Integer> b = new ArrayList<>();
+			a.add(1);
+			b.add(1);
+			b.add(0);
+			r.add(a);
+			r.add(b);
+
+			for (int i = 2; i < n; i++) {
+				ArrayList<Integer> y = new ArrayList<>(r.get(i - 2).size() + r.get(i - 1).size());
+
+				for (int j = 0; j < r.get(i - 1).size(); j++) {
+					y.add(r.get(i-1).get(j));
+					
+				}
+				for (int j = 0; j < r.get(i - 2).size(); j++) {
+					y.add(r.get(i - 2).get(j));
+
+				}
+				r.add(y);
+			}
+		}
+
+	}
+	
+	public String toString() {
+		String s ="";
+		for (ArrayList<Integer> a : r) {
+			
+			s+= a +"\n";
+			
+			
+		} 
+		return s;
+	}
+	public int subsequenceIndex(ArrayList<Integer> target){
+		int g =0;
+		if(r.get(n-1).contains(target)){
+			
+			  g = r.get(n-1).indexOf(target);
+		}
+			
+		return g;
+	}
+	
+	public static void main(String[] args)
+	{
+		Rabbit bugs = new Rabbit(5);
+		bugs.init();
+		ArrayList<Integer>g = new ArrayList<>();
+		g.add(1);
+		g.add(1);
+		g.add(1);
+		int f= bugs.subsequenceIndex(g);
+		System.out.print(bugs);
+		System.out.println(f);
+	}
+
+}

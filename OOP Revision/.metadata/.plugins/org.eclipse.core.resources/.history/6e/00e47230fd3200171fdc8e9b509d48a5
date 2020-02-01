@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+
+public class Question1 {
+
+	public ArrayList<Integer> cayley() {
+		return null;
+
+	}
+
+	public static int[] countVowels(String[] words) {
+		int n = words.length;
+		int[] vowels = new int[n];
+		int v=0;
+
+		for(String word: words)
+		{
+			int j =0;
+			for( int i=0;i<word.length();i++)
+			{
+				
+				if(word.charAt(i)=='A' || word.charAt(i)=='E'||word.charAt(i)=='I' ||word.charAt(i)=='O' ||word.charAt(i)=='U' || word.charAt(i)=='a' ||word.charAt(i)=='e' ||word.charAt(i)=='i' ||word.charAt(i)=='o' ||word.charAt(i)=='u' )
+				{
+					v++;
+					
+				}
+				vowels[j]=v;
+				j++
+				
+			}
+		}
+		return vowels;
+	}
+
+	public static String mostVowels(String[] words) {
+		return null;
+
+	}
+
+	public static void main(String[] args) {
+		
+		String[] chart= new String [args.length];
+		
+		for (int i = 0; i<args.length;i++){
+			chart[i]=args[i];
+		}
+		
+		int[] numbers = countVowels(chart);
+		
+		for(int j=0; j<numbers.length;j++)
+		{
+			System.out.print(numbers[j]);
+		}
+
+	}
+
+}

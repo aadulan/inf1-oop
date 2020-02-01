@@ -1,0 +1,13 @@
+
+public class Favourite {
+	
+	public void addTrack(String artist, String title)
+	{
+		
+	}
+	public void showFavourites()
+	{
+		
+	}
+
+}

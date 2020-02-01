@@ -1,0 +1,95 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Beads {
+
+	public static Set<Integer> sums(ArrayList<Integer> nums, int n) {
+		HashSet<Integer> s = new HashSet<Integer>();
+
+		if (n < 1 || nums == null) 
+		{
+			return s;
+		} 
+		else 
+		{
+			for (int i = 0; i < nums.size(); i++)
+			{
+				int f = 0;
+				for (int j = 0; j < n; j++) 
+				{
+
+					f += nums.get((i + j) % nums.size());
+				}
+				s.add(f);
+			}
+
+			
+
+		}
+		return s;
+	} 
+
+
+	
+
+	public static Set<Integer> allSums(ArrayList<Integer> nums) {
+		
+		HashSet<Integer> a = new HashSet<Integer>();
+	for(int i =0; i<= nums.size() ;i++)
+	{
+		a.addAll(sums(nums,i));
+	}
+	return a;
+
+	}
+
+	public static int findMax(Set<Integer> s) {
+		int high=0;
+		for (int f : s)
+		{
+			if(f> high)
+			{
+				high = f;
+			}
+		}
+			
+		
+		
+			int max =0;
+			for (int i = 1; i <= high; i++) 
+			{
+				if( s.contains(i))
+				{
+					max=i;
+				}
+				else{
+					break;
+				}			
+			}
+	return max;
+
+	}
+
+	public static void main(String[] args) {
+//		ArrayList<Integer> a = new ArrayList<>();
+//		a.add(1);
+//		a.add(2);
+//		a.add(3);
+//		a.add(4);
+//		System.out.println(sums(a, 2));
+//		System.out.println(allSums(a));
+		
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		for (int i = 0; i < args.length; i++) {
+			nums.add(Integer.parseInt(args[0]));
+			
+		}
+		HashSet sums = new HashSet(nums);
+		
+		System.out.print(findMax(sums));
+		
+		
+	}
+
+}

@@ -1,0 +1,66 @@
+import java.util.Calendar;
+
+public class CreditCard {
+	
+	private static int expiryMonth;
+	private static int expiryYear;
+	private static String  firstName;
+	private static String lastName;
+	private static String ccNumber;
+	
+	
+	public CreditCard(int expiryMonth, int expiryYear, String firstName, String lastName, String ccNumber)
+	{
+		this.expiryMonth= expiryMonth;
+		this.expiryYear= expiryYear;
+		this.firstName= firstName;
+		this.lastName= lastName;
+		this.ccNumber= ccNumber;
+	}
+
+	public String formatExpiryDate()
+	{
+	
+		String y = String.valueOf(expiryYear);
+		String yy= y.substring(2);
+		String s = expiryMonth+"/"+yy;
+		return s;
+	}
+	public String formatFullName()
+	
+	{
+		String t = firstName+" "+ lastName;
+		
+		return t;
+	}
+	public String formatCCNumber()
+	{
+		String a =ccNumber;
+		String b=a.substring(0,3);
+		String c=a.substring(4,7);
+		String d=a.substring(8,11);
+		String e= a.substring(12,15);
+		
+		return (b+" "+ c+ " "+ d+" "+ e);
+	}
+	public boolean isValid()
+	{
+      boolean f = false;
+     
+      Calendar now = Calendar.getInstance();
+      int Year = now.get(Calendar.YEAR);
+      int Month= now.get(Calendar.MONTH)+1;
+      
+      if(expiryMonth> Month && expiryYear> Year){
+    	  f = true;
+      }
+     
+     return f;
+      
+	}
+	public String toString()
+	{
+		String card = "Number: "+ formatCCNumber() + "\n"+"Expiration date: " + formatExpiryDate()+ "\n" + "Account holder: " + formatFullName()+ "\n"+ "Is valid: "+ isValid();
+	return card;
+	}
+}
